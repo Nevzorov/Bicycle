@@ -10,17 +10,17 @@ public class Main {
         MountBicycle[] mountBicycle = new MountBicycle[5];
         SprintBicycle[] sprintBicycle = new SprintBicycle[5];
 
-        ArrayList<Person> list = new ArrayList<Person>();
+        ArrayList<Person> list = new ArrayList<>();
 
         autoBicycle(mountBicycle, sprintBicycle);
         manualusers(list);
-        for (int j = 0; j < list.size(); j++) {
-            list.get(j).printPerson();
-            for (int i = 0; i < 5; i++)
-            {   double calm = mountBicycle[i].callories(list.get(j), 20, mountBicycle[i]);
-                double cals = sprintBicycle[i].callories(list.get(j), 20, sprintBicycle[i]);
-                System.out.println("Пользователь: " + list.get(j).name + " на Горном " + i + " велосипеде, потратил: " + calm);
-                System.out.println("Пользователь: " + list.get(j).name + " на Шоссейном " + i + "  велосипеде, потратил: " + cals);
+        for (Person aList : list) {
+            aList.printPerson();
+            for (int i = 0; i < 5; i++) {
+                double calm = MountBicycle.callories(aList, 20, mountBicycle[i]);
+                double cals = SprintBicycle.callories(aList, 20, sprintBicycle[i]);
+                System.out.println("Пользователь: " + aList.name + " на Горном " + i + " велосипеде, потратил: " + calm);
+                System.out.println("Пользователь: " + aList.name + " на Шоссейном " + i + "  велосипеде, потратил: " + cals);
             }
         }
     }

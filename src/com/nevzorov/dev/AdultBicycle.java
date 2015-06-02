@@ -9,7 +9,10 @@ public abstract class AdultBicycle extends Bicycle {
     public AdultBicycle (int wheelsDiameter, float baseSize, boolean isBrakeExist){
         super(wheelsDiameter, baseSize, isBrakeExist);
     }
-    protected abstract double callories (Person person, int count, Bicycle bicycle);
+
+    protected static double callories(Person person, int count, Bicycle bicycle) {
+    return 0;
+    }
 
     protected float vel() {
         return 0;

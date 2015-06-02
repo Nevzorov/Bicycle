@@ -11,15 +11,17 @@ public class MountBicycle extends AdultBicycle{
         this.countGears = countGears;
     }
 
-    @Override
-    protected double callories(Person person, int count, Bicycle bicycle) {
-        double cal = (double) ((((person.old + person.height + person.girth) / person.weight) * vel() * count));
-        return cal;
+
+    protected static double callories(Person person, int count, Bicycle bicycle) {
+        return (double) ((((person.old + person.height + person.girth) / person.weight) * vel(bicycle) * count));
     }
 
-    @Override
-    protected float vel() {
-        super.vel();
-        return this.baseSize*this.wheelsDiameter/this.countGears;
+    protected static float vel(Bicycle bicycle) {
+        float vel = 0;
+        if (bicycle instanceof MountBicycle) {
+            MountBicycle mountBicycle = (MountBicycle) bicycle;
+            vel = mountBicycle.wheelsDiameter * mountBicycle.baseSize / mountBicycle.countGears;
+        }
+        return vel;
     }
 }

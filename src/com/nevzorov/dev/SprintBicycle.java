@@ -10,15 +10,17 @@ public class SprintBicycle extends AdultBicycle{
         super(wheelsDiameter, baseSize, isBrakeExist);
         this.wheealsThin = weealsThin;
     }
-    @Override
-    protected double callories(Person person, int count, Bicycle bicycle) {
-        double cal = (double) ((((person.old + person.height + person.girth) / person.weight) * vel() * count));
-        return cal;
+
+    protected static double callories(Person person, int count, Bicycle bicycle) {
+        return (double) ((((person.old + person.height + person.girth) / person.weight) * vel(bicycle) * count));
     }
 
-    @Override
-    protected float vel() {
-        super.vel();
-        return this.baseSize*this.wheelsDiameter/this.wheelLength();
+    protected static float vel(Bicycle bicycle) {
+        float vel = 0;
+        if (bicycle instanceof SprintBicycle) {
+            SprintBicycle sprintBicycle = (SprintBicycle) bicycle;
+            vel = sprintBicycle.wheelsDiameter * sprintBicycle.baseSize / sprintBicycle.wheelsDiameter;
+        }
+        return vel;
     }
 }
